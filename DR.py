@@ -15,7 +15,6 @@ def data_loader(args):
     """
     if args.data == "Swiss_Roll":
         print("Using Swiss_Roll")
-        X, phi = data_swiss_roll()
     elif args.data == "toy_data":
         print("Using toy_data")
         X, phi = toy_data()
@@ -214,8 +213,16 @@ def PCA(X, out_dim):
     N = X.shape[1] # number of data instances
 
     ### Your job 1 starts here ###
-    mu = ...
-    Sigma = ...
+    mu = X.mean
+
+    Sigma = np.zeros((D, N))
+
+    for instance in range(0, N):
+        for dimension in range(0, D):
+            val = X([instance, dimension]) - mu([instance, dimension]) # Calculate the difference
+            Sigma([dimension, instance]) = val
+
+    Sigma = Sigma / N
 
     #You _MAY_ use numpy's mean, sum, matmul, etc functions
     #You _MAY NOT_ use numpy's cov() function (just this once, try implementing it yourself)

@@ -17,7 +17,7 @@ print(B)
 print(C)
 print(D)
 
-# Print shapes
+# # Print shapes
 print(A.shape)
 print(B.shape)
 print(C.shape)
@@ -28,7 +28,7 @@ print(B.ndim)
 print(C.ndim)
 print(D.ndim)
 
-# Reshape
+# # Reshape
 print(D.reshape(6, 1)) # 6-by-1 matrix (column vector)
 print(D.reshape(6, 1).shape)
 print(D.reshape(6, 1).ndim)
@@ -42,7 +42,7 @@ print(D.reshape(-1, 1).shape)
 print(D.reshape(-1, 1).ndim)
 
 
-# Extract element (note that, numpy index starts from 0)
+# # Extract element (note that, numpy index starts from 0)
 print(A)
 print(A[1,1])
 print(A[:, 1])
@@ -50,25 +50,25 @@ print(A[1, :])
 print(A[1, -1])
 print(A[1, 0:3])
 
-# matrix transpose
+# # matrix transpose
 print(A)
 print(A.transpose())
 
-# real values
+# # real values
 print(-4)
 print((-4)**0.5)
 print(np.real(-4**0.5))
 
-# matrix multiplication
+# # matrix multiplication
 print(np.matmul(A.transpose(), A))
 print(np.matmul(A, A.transpose()))
 print(np.matmul(B, C))
 print(np.matmul(C, B))
 
-# matrix inversion
+# # matrix inversion
 print(np.linalg.inv(np.matmul(A, A.transpose())))
 
-# eigendecomposition
+# # eigendecomposition
 Sigma = np.matmul(A, A.transpose())
 V, W = np.linalg.eig(Sigma)
 print(V)
