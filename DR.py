@@ -15,6 +15,7 @@ def data_loader(args):
     """
     if args.data == "Swiss_Roll":
         print("Using Swiss_Roll")
+        X, phi = data_swiss_roll()
     elif args.data == "toy_data":
         print("Using toy_data")
         X, phi = toy_data()
