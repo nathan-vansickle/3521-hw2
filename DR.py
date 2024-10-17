@@ -213,16 +213,23 @@ def PCA(X, out_dim):
     N = X.shape[1] # number of data instances
 
     ### Your job 1 starts here ###
-    mu = X.mean
+    mu = np.mean(X, 1)
 
-    Sigma = np.zeros((D, N))
+    Sigma = np.zeros((D, D))
 
-    for instance in range(0, N):
-        for dimension in range(0, D):
-            val = X([instance, dimension]) - mu([instance, dimension]) # Calculate the difference
-            Sigma([dimension, instance]) = val
+    for d1 in range(0, D):
+        for d2 in range(0, D):
+            sum = 0
+            for i in range(0, N):
+                diff1 = X[d1, i] - mu[d1]
+                diff2 = X[d2, i] - mu[d2]
+                val = diff1 * diff2
 
-    Sigma = Sigma / N
+                sum += val
+            
+            sum /= N
+
+        Sigma[d1][d2] = sum
 
     #You _MAY_ use numpy's mean, sum, matmul, etc functions
     #You _MAY NOT_ use numpy's cov() function (just this once, try implementing it yourself)
